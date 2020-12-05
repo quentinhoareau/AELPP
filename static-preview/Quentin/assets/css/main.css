@@ -1,0 +1,9 @@
+.carousel-caption{
+   top: 50%;
+   bottom: unset;
+   text-align: unset!important;
+}
+
+.main-side h5{
+   font-size: 5rem;
+}

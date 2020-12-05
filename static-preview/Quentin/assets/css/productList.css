@@ -1,0 +1,8 @@
+.card{
+   margin: 0 0 30px 0;
+}
+
+.col-sm-4{
+   max-width: unset;
+   margin: auto;
+}
