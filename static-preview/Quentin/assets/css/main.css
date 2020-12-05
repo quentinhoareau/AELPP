@@ -4,6 +4,52 @@
    text-align: unset!important;
 }
 
+
 .main-side h5{
    font-size: 5rem;
+}
+
+.about{
+   display: flex;
+}
+
+.article-thumbnail{
+   width: 300px;
+}
+
+#last-article .card{
+   display: flex;
+   flex-direction: unset;
+}
+
+.text-muted{
+   position: absolute;
+    bottom: 15px;
+    right: 15px;
+}
+
+.second-part-home{
+   background-color: #eaeaea;
+   min-height: 800px;
+}
+
+.card-body{
+   width: 100%;
+}
+
+hr.article{
+   border-bottom: 5px #549d34 solid;
+   width: 80px;
+   margin: 6px 0;
+}
+small.author{
+   color:grey;
+   margin-bottom: 10px ;
+   display: block;
+}
+
+h1.title-home{
+   color:grey;
+   text-align: center;
+   margin-bottom: 50px;
 }
