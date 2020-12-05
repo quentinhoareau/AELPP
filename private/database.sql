@@ -26,7 +26,7 @@ CREATE TABLE `contact` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `surname` varchar(150) NOT NULL,
   `name` varchar(150) NOT NULL,
-  `phone` int(100) DEFAULT NULL,
+  `phone` varchar(150) DEFAULT NULL,
   `object` varchar(200) DEFAULT NULL,
   `message` text NOT NULL,
   `date` datetime NOT NULL DEFAULT '0000-00-00 00:00:00' ON UPDATE current_timestamp(),
@@ -134,4 +134,4 @@ CREATE TABLE `role` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 
--- 2020-12-05 16:53:51
+-- 2020-12-05 16:56:12
