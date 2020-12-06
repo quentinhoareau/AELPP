@@ -12,14 +12,16 @@ USE `edd`;
 DROP TABLE IF EXISTS `article`;
 CREATE TABLE `article` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
-  `title` int(150) NOT NULL,
-  `html_content` text NOT NULL,
+  `title` varchar(150) NOT NULL,
+  `html_content` longtext NOT NULL,
   `id_author` int(11) NOT NULL,
   PRIMARY KEY (`id`),
   KEY `id_staff` (`id_author`),
   CONSTRAINT `article_ibfk_1` FOREIGN KEY (`id_author`) REFERENCES `person` (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
 
+INSERT INTO `article` (`id`, `title`, `html_content`, `id_author`) VALUES
+(1,	'Mon premier article',	'<h1>Partie de l\'article</h1>\r\n<p>Contenu de l\'article</p>',	1);
 
 DROP TABLE IF EXISTS `contact`;
 CREATE TABLE `contact` (
@@ -31,8 +33,10 @@ CREATE TABLE `contact` (
   `message` text NOT NULL,
   `date` datetime NOT NULL DEFAULT '0000-00-00 00:00:00' ON UPDATE current_timestamp(),
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
 
+INSERT INTO `contact` (`id`, `surname`, `name`, `phone`, `object`, `message`, `date`) VALUES
+(1,	'Hoareau',	'Quentin',	'0606060606',	'Mon premier contact',	'Ma première description',	'2020-12-06 20:40:46');
 
 DROP TABLE IF EXISTS `event`;
 CREATE TABLE `event` (
@@ -47,8 +51,10 @@ CREATE TABLE `event` (
   KEY `num_project` (`num_project`),
   CONSTRAINT `event_ibfk_1` FOREIGN KEY (`id_creator`) REFERENCES `person` (`id`),
   CONSTRAINT `event_ibfk_2` FOREIGN KEY (`num_project`) REFERENCES `project` (`num`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
 
+INSERT INTO `event` (`id`, `title`, `date_creation`, `predicted_date`, `id_creator`, `num_project`) VALUES
+(1,	'Mon premier évent',	'2020-12-06 19:48:10',	'2020-12-06',	1,	1);
 
 DROP TABLE IF EXISTS `group`;
 CREATE TABLE `group` (
@@ -56,8 +62,10 @@ CREATE TABLE `group` (
   `name` varchar(150) NOT NULL,
   `description` varchar(200) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
 
+INSERT INTO `group` (`id`, `name`, `description`) VALUES
+(1,	'Mon premier groupe',	'Ma description de groupe');
 
 DROP TABLE IF EXISTS `group_person`;
 CREATE TABLE `group_person` (
@@ -92,8 +100,10 @@ CREATE TABLE `person` (
   PRIMARY KEY (`id`),
   KEY `role_code` (`role_code`),
   CONSTRAINT `person_ibfk_1` FOREIGN KEY (`role_code`) REFERENCES `role` (`code`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
 
+INSERT INTO `person` (`id`, `name`, `surname`, `email`, `phone`, `role_code`) VALUES
+(1,	'Benoit',	'BO',	'b.test@gmail.com',	'0606060606',	'EL');
 
 DROP TABLE IF EXISTS `plant`;
 CREATE TABLE `plant` (
@@ -105,16 +115,22 @@ CREATE TABLE `plant` (
   PRIMARY KEY (`id`),
   KEY `code_type` (`code_type`),
   CONSTRAINT `plant_ibfk_1` FOREIGN KEY (`code_type`) REFERENCES `plant_type` (`code`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
 
+INSERT INTO `plant` (`id`, `name`, `size`, `description`, `code_type`) VALUES
+(1,	'Camomille',	500,	'La camomille calme et facilite le sommeil',	1);
 
 DROP TABLE IF EXISTS `plant_type`;
 CREATE TABLE `plant_type` (
   `code` int(11) NOT NULL AUTO_INCREMENT,
   `label` varchar(150) NOT NULL,
   PRIMARY KEY (`code`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
 
+INSERT INTO `plant_type` (`code`, `label`) VALUES
+(1,	'Arbre'),
+(2,	'Fleure'),
+(3,	'Tisane');
 
 DROP TABLE IF EXISTS `project`;
 CREATE TABLE `project` (
@@ -123,8 +139,10 @@ CREATE TABLE `project` (
   `description` text NOT NULL,
   `date_creation` datetime NOT NULL,
   PRIMARY KEY (`num`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
 
+INSERT INTO `project` (`num`, `name`, `description`, `date_creation`) VALUES
+(1,	'Mon premier groupe',	'Ma description de groupe',	'2020-12-06 19:40:14');
 
 DROP TABLE IF EXISTS `role`;
 CREATE TABLE `role` (
@@ -133,5 +151,8 @@ CREATE TABLE `role` (
   PRIMARY KEY (`code`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
+INSERT INTO `role` (`code`, `type`) VALUES
+('EL',	'Elève'),
+('EN',	'Enseignant ');
 
--- 2020-12-05 16:56:12
+-- 2020-12-06 16:41:26
