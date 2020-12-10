@@ -1,13 +1,13 @@
--- Adminer 4.7.7 MySQL dump
+-- Adminer 4.7.8 MySQL dump
 
 SET NAMES utf8;
 SET time_zone = '+00:00';
 SET foreign_key_checks = 0;
 SET sql_mode = 'NO_AUTO_VALUE_ON_ZERO';
 
-DROP DATABASE IF EXISTS `edd`;
-CREATE DATABASE `edd` /*!40100 DEFAULT CHARACTER SET utf8 */;
-USE `edd`;
+DROP DATABASE IF EXISTS `aelpp`;
+CREATE DATABASE `aelpp` /*!40100 DEFAULT CHARACTER SET utf8 */;
+USE `aelpp`;
 
 DROP TABLE IF EXISTS `article`;
 CREATE TABLE `article` (
@@ -155,4 +155,4 @@ INSERT INTO `role` (`code`, `type`) VALUES
 ('EL',	'Elève'),
 ('EN',	'Enseignant ');
 
--- 2020-12-06 16:41:26
+-- 2020-12-10 17:54:05
