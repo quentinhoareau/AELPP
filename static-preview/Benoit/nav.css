@@ -1,0 +1,35 @@
+/*Barre de navigation*/
+
+ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden; 
+    background-color: antiquewhite;   
+}
+
+li{
+  float: left;
+  position: relative;
+  left: 850px;
+    
+}
+    
+a{
+    display: inline-flex;
+    padding: 20px;
+    text-decoration: none;
+    color: black;
+    font-weight: bold;
+}
+
+li a:hover:not(.active){
+    border-bottom: 2px solid rgba(61, 61, 61, 0.904);
+    transition-duration: 0.1s;
+}
+
+.active{
+    border-bottom: 2px solid rgb(22, 175, 22);
+}
+    
+/*-------------------*/
