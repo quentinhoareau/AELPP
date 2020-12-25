@@ -1,60 +1,5 @@
-<!DOCTYPE html>
-<html lang="fr">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-    <script src="assets/js/jquery.js"></script>                                 <!-- JQuery 3.4.0 -->
-    <script src="assets/js/news.js"></script>                                 <!-- JQuery 3.4.0 -->
 
-    <title> Template Quentin </title>                                      <!-- Titre de l'onglet -->
-
-    <link rel="stylesheet" href="assets/css/main.css">                       <!-- Css Principal du site -->
-    <link rel="stylesheet" href="assets/css/navigation.css">                    <!-- Css de la Navigation -->
-    <link rel="stylesheet" href="assets/css/footer.css">                        <!-- Css du Footer -->
-                       <!-- Css du Footer -->
-    <link rel="stylesheet" href="assets/DataTable/datatable.css">               <!-- Css pour la librerie DataTable -->
-    <script src="assets/DataTable/datatable.js"> </script>                      <!-- Script pour la librerie DataTable -->
-    <link rel="stylesheet" href="assets/fontawesome/font-awesome.min.css">      <!-- Css pour les icones avec la librerie Fontawesome --> 
-    <link rel="stylesheet" href="assets/bootstrap-4.3.1/bootstrap.min.css">     <!-- Boostrap 4.3.1 -->
-    <script src="assets/bootstrap-4.3.1/bootstrap.min.js"> </script>     <!-- Boostrap 4.3.1 -->   
-    <link rel="stylesheet" href="assets/css/news.css">     
-  
-    
-</head>
-<body>
-   <nav class="navbar navbar-expand-lg navbar-light bg-light">
-      <a class="navbar-brand" href="#">EDD</a>
-      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-    
-      <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
-        <ul class="navbar-nav mr-auto mt-2 mt-lg-0" style="margin-right:unset!important; margin-left:auto">
-          <li class="nav-item active">
-            <a class="nav-link" href="#">Accueil <span class="sr-only">(current)</span></a>
-          </li>
-          <li class="nav-item active">
-            <a class="nav-link" href="#">Services</a>
-          </li>
-          <li class="nav-item active">
-            <a class="nav-link " href="#">A propos</a>
-          </li>
-          <li class="nav-item active">
-            <a class="nav-link " href="#">Les plantes</a>
-          </li>
-
-          <li class="nav-item active">
-            <a class="nav-link " href="#">Notre Équipes</a>
-          </li>
-
-          <li class="nav-item active">
-            <a class="nav-link " href="#">FAQ</a>
-          </li>
-        </ul>
-
-      </div>
-    </nav>
 <div class="small-top">
 
   </div>
@@ -197,62 +142,23 @@
 
             <div id="last-article" class="container">
               
+
+              <?php foreach ($articlesList as $article ) { ?>
                <div class="card mb-3">
                   <div class="article-thumbnail">
                      <img class="card-img-top" src="assets/img/article-icon.png" alt="Card image cap">
                   </div>
                   
                   <div class="card-body">
-                     <h5 class="card-title">Protéger Mère nature</h5>
+                     <h5 class="card-title"><?= $article->title ?></h5>
                      <hr class="article">
-                     <small class="author">Écrit par Benoit</small>
-                     <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed 
-                        do eiusmod tempor incididunt ut labore et dolore magna aliqua. 
-                        Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris 
-                        nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in 
-                        reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla 
-                        pariatur. Excepteur sint occaecat cupidatat non proident.</p>
+                     <small class="author">Écrit par <?= $article->getAuthor()->name ?></small>
+                     <p class="card-text"><?= $article->html_content ?></p>
                      <p class="card-text"><small class="text-muted">Dernière mise à jours il y a 3 mins</small></p>
                   </div>
                </div>
+               <?php } ?>
    
-               <div class="card mb-3">
-                  <div class="article-thumbnail">
-                     <img class="card-img-top" src="assets/img/article-icon.png" alt="Card image cap">
-                  </div>
-                  
-                  <div class="card-body">
-                     <h5 class="card-title">Protéger Mère nature</h5>
-                     <hr class="article">
-                     <small class="author">Écrit par Benoit</small>
-                     <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed 
-                        do eiusmod tempor incididunt ut labore et dolore magna aliqua. 
-                        Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris 
-                        nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in 
-                        reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla 
-                        pariatur. Excepteur sint occaecat cupidatat non proident.</p>
-                     <p class="card-text"><small class="text-muted">Dernière mise à jours il y a 3 mins</small></p>
-                  </div>
-               </div>
-   
-               <div class="card mb-3">
-                  <div class="article-thumbnail">
-                     <img class="card-img-top" src="assets/img/article-icon.png" alt="Card image cap">
-                  </div>
-                  
-                  <div class="card-body">
-                     <h5 class="card-title">Protéger Mère nature</h5>
-                     <hr class="article">
-                     <small class="author">Écrit par Benoit</small>
-                     <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed 
-                        do eiusmod tempor incididunt ut labore et dolore magna aliqua. 
-                        Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris 
-                        nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in 
-                        reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla 
-                        pariatur. Excepteur sint occaecat cupidatat non proident.</p>
-                     <p class="card-text"><small class="text-muted">Dernière mise à jours il y a 3 mins</small></p>
-                  </div>
-               </div>
    
    
             </div>
@@ -264,15 +170,3 @@
   </div>
       </section>
       
- 
-      
-      
-
-
-  
-</body>
-
-
-        
-</html>
-

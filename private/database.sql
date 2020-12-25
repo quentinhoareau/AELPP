@@ -14,14 +14,17 @@ CREATE TABLE `article` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `title` varchar(150) NOT NULL,
   `html_content` longtext NOT NULL,
-  `id_author` int(11) NOT NULL,
+  `author_id` int(11) NOT NULL,
+  `date` datetime NOT NULL DEFAULT '0000-00-00 00:00:00' ON UPDATE current_timestamp(),
   PRIMARY KEY (`id`),
-  KEY `id_staff` (`id_author`),
-  CONSTRAINT `article_ibfk_1` FOREIGN KEY (`id_author`) REFERENCES `person` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
+  KEY `id_staff` (`author_id`),
+  CONSTRAINT `article_ibfk_1` FOREIGN KEY (`author_id`) REFERENCES `person` (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8;
 
-INSERT INTO `article` (`id`, `title`, `html_content`, `id_author`) VALUES
-(1,	'Mon premier article',	'<h1>Partie de l\'article</h1>\r\n<p>Contenu de l\'article</p>',	1);
+INSERT INTO `article` (`id`, `title`, `html_content`, `author_id`, `date`) VALUES
+(1,	'Mon premier article 1',	'azaz',	1,	'2020-12-25 22:34:31'),
+(2,	'Protéger Mère nature 1',	'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident.',	1,	'2020-11-24 01:05:12'),
+(4,	'Protéger Mère nature 2',	'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident.',	1,	'2020-12-24 01:05:12');
 
 DROP TABLE IF EXISTS `contact`;
 CREATE TABLE `contact` (
@@ -155,4 +158,4 @@ INSERT INTO `role` (`code`, `type`) VALUES
 ('EL',	'Elève'),
 ('EN',	'Enseignant ');
 
--- 2020-12-10 17:54:05
+-- 2020-12-25 18:41:38
