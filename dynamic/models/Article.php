@@ -7,6 +7,7 @@ class Article{
     private $author_id;
     private $publish_date;
     private $edit_date;
+    private $published;
 
     //Constructeur
     public function __construct(array $data){
@@ -32,6 +33,10 @@ class Article{
 
    //Setter
    public function __set( $att , $val ){ $this->$att = $val;}
+
+   private function setPublished($value){
+      if($value == 1){$this->published = true;} else{ $this->published = false;}
+   }
 
    //Autre méthodes
    public function getAuthor(){
