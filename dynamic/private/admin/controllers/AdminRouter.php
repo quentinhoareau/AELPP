@@ -41,8 +41,8 @@ class AdminRouter extends Router{
       
          }
          else{
-            require_once('controllers/LoginAdminController.php');
-            $this->ctrl = new LoginAdminController($this->url);
+            require_once('controllers/ArticleAdminController.php');
+            $this->ctrl = new ArticleAdminController($this->url);
          }
       }
       catch(Throwable $e){
