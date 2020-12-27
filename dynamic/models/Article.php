@@ -5,7 +5,8 @@ class Article{
     private $title;
     private $html_content;
     private $author_id;
-    private $date;
+    private $publish_date;
+    private $edit_date;
 
     //Constructeur
     public function __construct(array $data){

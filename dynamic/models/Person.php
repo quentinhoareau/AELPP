@@ -38,5 +38,10 @@ class Person{
       $AuthorManager = new AuthorManager;
       return $AuthorManager->get($this->author_id);
    }
+
+   public function getRole(){
+      $RoleManager = new RoleManager;
+      return $RoleManager->get($this->role_code);
+   }
 }
  

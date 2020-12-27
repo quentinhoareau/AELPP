@@ -13,7 +13,7 @@ class ArticleManager extends Database{
     //Obtenir une liste d'objets des 3 derniers articles
     public function getLastThree(){
         $this->getDB(); 
-        $query = "SELECT * FROM article ORDER BY date ASC LIMIT 3";
+        $query = "SELECT * FROM article ORDER BY publish_date ASC LIMIT 3";
         return $this->getModel("Article", $query) ;
     }
 
@@ -32,17 +32,17 @@ class ArticleManager extends Database{
     }
 
     //Mie à jours d'un article
-    public function update($id, $title, $html_content, $author_id, $date){
+    public function update($id, $title, $html_content, $author_id){
         $this->getDB(); 
-        $query = "UPDATE article SET title=?, html_content=?, author_id=?, date=? WHERE id=?";
-        $this->execQuery($query,[$title, $html_content, $author_id, $date, $id]);
+        $query = "UPDATE article SET title=?, html_content=?, author_id=?, edit_date=NOW() WHERE id=?";
+        $this->execQuery($query,[$title, $html_content, $author_id, $id]);
     }
 
     //Insertion d'un article
-    public function insert($title, $html_content, $author_id, $date){
+    public function insert($title, $html_content, $author_id){
         $this->getDB(); 
-        $query = "INSERT INTO article(title, html_content, author_id, date) VALUES (?, ?, ?, ?)";
-        $this->execQuery($query, [$title, $html_content, $author_id, $date]);
+        $query = "INSERT INTO article(title, html_content, author_id, publish_date) VALUES (?, ?, ?, NOW()";
+        $this->execQuery($query, [$title, $html_content, $author_id]);
     }
 
 

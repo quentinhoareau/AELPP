@@ -15,16 +15,17 @@ CREATE TABLE `article` (
   `title` varchar(150) NOT NULL,
   `html_content` longtext NOT NULL,
   `author_id` int(11) NOT NULL,
-  `date` datetime NOT NULL DEFAULT '0000-00-00 00:00:00' ON UPDATE current_timestamp(),
+  `publish_date` datetime NOT NULL,
+  `edit_date` datetime DEFAULT NULL ON UPDATE current_timestamp(),
   PRIMARY KEY (`id`),
   KEY `id_staff` (`author_id`),
   CONSTRAINT `article_ibfk_1` FOREIGN KEY (`author_id`) REFERENCES `person` (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8;
 
-INSERT INTO `article` (`id`, `title`, `html_content`, `author_id`, `date`) VALUES
-(1,	'Mon premier article 1',	'azaz',	1,	'2020-12-25 22:34:31'),
-(2,	'Protéger Mère nature 1',	'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident.',	1,	'2020-11-24 01:05:12'),
-(4,	'Protéger Mère nature 2',	'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident.',	1,	'2020-12-24 01:05:12');
+INSERT INTO `article` (`id`, `title`, `html_content`, `author_id`, `publish_date`, `edit_date`) VALUES
+(1,	'Mon premier article 1',	'azaz',	1,	'2020-12-27 21:31:34',	NULL),
+(2,	'Protéger',	'<p><strong>Partie1:</strong></p>\r\n\r\n<p>salut 1er&nbsp;texte</p>\r\n\r\n<p>&nbsp;</p>\r\n\r\n<p><strong>Partie 2:</strong></p>\r\n\r\n<p>salut 2eme texte</p>\r\n\r\n<hr />\r\n<p>saluuuuut</p>\r\n',	1,	'2020-12-27 22:52:59',	'2020-12-27 23:39:11'),
+(4,	'Protéger Mère nature 2',	'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident.',	1,	'2020-12-27 21:31:42',	NULL);
 
 DROP TABLE IF EXISTS `contact`;
 CREATE TABLE `contact` (
@@ -103,10 +104,12 @@ CREATE TABLE `person` (
   PRIMARY KEY (`id`),
   KEY `role_code` (`role_code`),
   CONSTRAINT `person_ibfk_1` FOREIGN KEY (`role_code`) REFERENCES `role` (`code`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
 
 INSERT INTO `person` (`id`, `name`, `surname`, `email`, `phone`, `role_code`) VALUES
-(1,	'Benoit',	'BO',	'b.test@gmail.com',	'0606060606',	'EL');
+(1,	'Benoit',	'BO',	'b.test@gmail.com',	'0606060606',	'EL'),
+(2,	'Quentin',	'HOA',	'q.test@gmail.com',	'59959595',	'EL'),
+(3,	'Florent',	'DJX',	'd.test@gmail.com',	'59959595',	'EN');
 
 DROP TABLE IF EXISTS `plant`;
 CREATE TABLE `plant` (
@@ -158,4 +161,4 @@ INSERT INTO `role` (`code`, `type`) VALUES
 ('EL',	'Elève'),
 ('EN',	'Enseignant ');
 
--- 2020-12-25 18:41:38
+-- 2020-12-27 20:01:52

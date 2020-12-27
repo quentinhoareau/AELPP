@@ -4,6 +4,7 @@ class ArticleAdminController{
    private $View;
    public $message;
    private $ArticleManager;
+   private $PersonManager;
    
    // CONSTRUCTEUR 
    public function __construct($url){
@@ -15,6 +16,7 @@ class ArticleAdminController{
         
          /*---------MANAGER---------*/
          $this->ArticleManager= new ArticleManager();
+         $this->PersonManager= new PersonManager();
          
          //Changement des path pour le BDD
          Database::setConfigPath("../config.ini");
@@ -30,7 +32,9 @@ class ArticleAdminController{
             $this->ArticleManager->add($_POST["addArticle"]);
          }
          if( isset($_POST["updateArticle"]) ){ //Si formulaire modifié
-            $this->ArticleManager->update($_POST["updateArticle"], $_POST["label"]);
+      
+
+            $this->ArticleManager->update($_POST["updateArticle"], $_POST["title"], $_POST["html_content"], $_POST["author_id"]);
          }
          /*------------------*/
      
@@ -44,6 +48,7 @@ class ArticleAdminController{
             $viewName= "ArticleUpdate";
             $data= array(
                "article" => $this->ArticleManager->get($url[2]), //Obtenir la liste des produits
+               "personList" => $this->PersonManager->getList()
             );
          }
           //Liste des produits
