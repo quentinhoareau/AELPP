@@ -11,3 +11,6 @@ _(N'oubliez pas de changer les identifiants de connexion pour avoir accès à la
 
 3) Dernière étape: Pour naviguer sur le site en version dynamique il vous suffit d'accéder au dossier 'dynamic' depuis votre url du dossier du projet
     - Dans mon cas, pour accéder au site en version dynamique, mon url est : http://127.0.0.1/AELPP/dynamic/ (si le projet est dans la racine du serveur)
+
+3) Pour naviguer sur l'espace adminsitration vous devez entrer dans votre URL : .../dynamic/private/admin/
+    - Dans mon cas, ça sera : http://127.0.0.1/AELPP/dynamic/private/admin/
