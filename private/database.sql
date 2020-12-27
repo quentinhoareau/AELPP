@@ -17,15 +17,16 @@ CREATE TABLE `article` (
   `author_id` int(11) NOT NULL,
   `publish_date` datetime NOT NULL,
   `edit_date` datetime DEFAULT NULL ON UPDATE current_timestamp(),
+  `published` tinyint(4) DEFAULT 0,
   PRIMARY KEY (`id`),
   KEY `id_staff` (`author_id`),
   CONSTRAINT `article_ibfk_1` FOREIGN KEY (`author_id`) REFERENCES `person` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=13 DEFAULT CHARSET=utf8;
 
-INSERT INTO `article` (`id`, `title`, `html_content`, `author_id`, `publish_date`, `edit_date`) VALUES
-(1,	'Mon premier article 1',	'azaz',	1,	'2020-12-27 21:31:34',	NULL),
-(2,	'Protéger',	'<p><strong>Partie1:</strong></p>\r\n\r\n<p>salut 1er&nbsp;texte</p>\r\n\r\n<p>&nbsp;</p>\r\n\r\n<p><strong>Partie 2:</strong></p>\r\n\r\n<p>salut 2eme texte</p>\r\n\r\n<hr />\r\n<p>saluuuuut</p>\r\n',	1,	'2020-12-27 22:52:59',	'2020-12-27 23:39:11'),
-(4,	'Protéger Mère nature 2',	'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident.',	1,	'2020-12-27 21:31:42',	NULL);
+INSERT INTO `article` (`id`, `title`, `html_content`, `author_id`, `publish_date`, `edit_date`, `published`) VALUES
+(1,	'Mon premier article 1',	'<p>azazzzzzz</p>\r\n',	1,	'2020-12-27 21:31:34',	'2020-12-28 01:07:14',	0),
+(2,	'Protéger la nature !',	'<p><strong>Partie1:</strong></p>\r\n\r\n<p>salut 1er&nbsp;texte</p>\r\n\r\n<p>&nbsp;</p>\r\n\r\n<p><strong>Partie 2:</strong></p>\r\n\r\n<p>salut 2eme texte</p>\r\n\r\n<hr />\r\n<p>saluuuuut</p>\r\n',	1,	'2020-12-27 22:52:59',	'2020-12-28 00:26:42',	0),
+(4,	'Protéger Mère nature 2',	'<p><strong><span style=\"color:#e74c3c\">Lorem ipsum</span> </strong>dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident.</p>\r\n',	2,	'2020-12-27 21:31:42',	'2020-12-28 01:38:33',	1);
 
 DROP TABLE IF EXISTS `contact`;
 CREATE TABLE `contact` (
@@ -161,4 +162,4 @@ INSERT INTO `role` (`code`, `type`) VALUES
 ('EL',	'Elève'),
 ('EN',	'Enseignant ');
 
--- 2020-12-27 20:01:52
+-- 2020-12-27 21:49:25
