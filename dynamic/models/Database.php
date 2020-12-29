@@ -1,6 +1,6 @@
 <?php 
 
-abstract class Database{
+abstract class Database extends Website{
    private static $cnx;
    private static $loginPath;
    private static $configPath;

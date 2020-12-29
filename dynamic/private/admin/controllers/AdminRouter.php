@@ -3,7 +3,6 @@
 require_once('../../controllers/Router.php');
 
 
-
 class AdminRouter extends Router{
 
    public function __construct($url){

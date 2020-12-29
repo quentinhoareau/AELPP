@@ -1,9 +1,13 @@
 
 <div id="article" class="contenutab container" style="max-width: 800px">
-    <h3>Ajouter un nouvel</h3>
-    <form action="" method="POST">
-    <table class ="display" id="tableArticle">
 
+    <form action="" method="POST">
+    <table class="display table" id="tableEvent">
+    <thead class="thead-dark">
+            <tr>
+            <th colspan="2"> <h5>Ajouter un nouvel évènement </h3>  </th>
+            </tr>
+        </thead>
 
             <tr>
                 <td> <label for=""> Titre </label> </td> 

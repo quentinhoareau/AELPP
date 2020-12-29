@@ -12,6 +12,7 @@ $activeLink = str_replace($serverFolder,"",$_SERVER['REQUEST_URI']) ;
 define('ACTIVE_LINK',  $activeLink) ;
 define('SERVER_FOLDER',  $serverFolder) ;
 
+require_once('models/Website.php');
 require_once('views/Popup.php');
 require_once('views/View.php');
 require_once('controllers/Router.php');

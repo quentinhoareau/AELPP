@@ -27,12 +27,13 @@ class ArticleAdminController{
          /*---------FORMULAIRE---------*/
          if( isset($_POST["deleteArticle"]) ){ //Si formulaire supprimé
             $this->ArticleManager->delete($_POST["deleteArticle"]);
-            header("Location: ../article");
+            header("Location: ".ADMIN_HOME."article");
          }
          if( isset($_POST["addArticle"]) ){ //Si formulaire ajouté
             $published = $_POST['addArticle'];
             $idNewArticle = $this->ArticleManager->add($_POST['title'], $_POST['html_content'], $_POST['author_id'], $published);
-            header("Location: ../article/update/".$idNewArticle);
+      
+            header("Location: ".ADMIN_HOME."article/update/".$idNewArticle);
          }
          if( isset($_POST["updateArticle"]) ){ //Si formulaire modifié
             if(!isset($_POST["published"])){ $_POST["published"]  =0 ; }

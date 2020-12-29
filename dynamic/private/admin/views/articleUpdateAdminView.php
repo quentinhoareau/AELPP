@@ -67,7 +67,7 @@
                
                 <button class="form-control btn-info" type="button" name="consult" value="<?= $article->id; ?>"><a href="../../article/<?= $article->id; ?>"> <i class="fa fa-eye"></i> </a> </button> 
                 <button class="form-control btn-primary" type="submit" name="updateArticle" value="<?= $article->id; ?>"><i class="fa fa-save"></i></button> 
-                <form action="" method="POST"> <button class="form-control btn-danger" type="submit" name="deleteArticle" value="<?= $article->id; ?>"><i class="fa fa-trash"></i></button> </form>  
+                <form action="" method="POST"> <button onclick="return confirm('Voulez-vous vraiment supprimer cette article ?')" class="form-control btn-danger" type="submit" name="deleteArticle" value="<?= $article->id; ?>"><i class="fa fa-trash"></i></button> </form>  
              
             </td>
                 

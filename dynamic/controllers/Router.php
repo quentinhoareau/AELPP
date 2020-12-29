@@ -1,8 +1,11 @@
 <?php 
 
+
+
 class Router{
    protected $ctrl;
    protected $view;
+
    protected $modelDirectory;
    protected array $url;
 
@@ -20,6 +23,8 @@ class Router{
          spl_autoload_register(function($class){
             require_once($this->modelDirectory.'/'.$class.'.php');
          });
+
+    
 
          if( count($this->url) >= 1){
          //LE CONTROLLEUR ETS INCLU SELON LACTION DE LE L'UTILISATEUR
