@@ -21,7 +21,7 @@ CREATE TABLE `article` (
   PRIMARY KEY (`id`),
   KEY `id_staff` (`author_id`),
   CONSTRAINT `article_ibfk_1` FOREIGN KEY (`author_id`) REFERENCES `person` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=18 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=19 DEFAULT CHARSET=utf8;
 
 INSERT INTO `article` (`id`, `title`, `html_content`, `author_id`, `publish_date`, `edit_date`, `published`) VALUES
 (1,	'Mon premier article 1',	'<p>aaa</p>\r\n',	3,	'2020-12-27 21:31:34',	'2021-01-03 13:57:52',	0),
@@ -29,7 +29,8 @@ INSERT INTO `article` (`id`, `title`, `html_content`, `author_id`, `publish_date
 (4,	'Protéger Mère nature 2',	'<p><strong><span style=\"color:#e74c3c\">Lorem ipsum</span> </strong>dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident.</p>\r\n',	2,	'2020-12-27 21:31:42',	'2020-12-28 01:38:33',	1),
 (13,	'Cou article',	'<p>D&eacute;crivez le contenu de votre article.</p>\r\n',	3,	'2020-12-28 01:50:25',	'2021-01-03 14:02:55',	1),
 (16,	'azazaz',	'<p><strong>zazazazaz</strong></p>\r\n',	1,	'2021-01-03 14:06:14',	'2021-01-03 14:07:53',	0),
-(17,	'',	'',	1,	'2021-01-03 14:54:41',	NULL,	0);
+(17,	'',	'',	1,	'2021-01-03 14:54:41',	NULL,	0),
+(18,	'aza',	'',	1,	'2021-01-03 22:47:16',	NULL,	0);
 
 DROP TABLE IF EXISTS `contact`;
 CREATE TABLE `contact` (
@@ -60,7 +61,7 @@ CREATE TABLE `event` (
   KEY `num_project` (`num_project`),
   CONSTRAINT `event_ibfk_1` FOREIGN KEY (`id_creator`) REFERENCES `person` (`id`),
   CONSTRAINT `event_ibfk_2` FOREIGN KEY (`num_project`) REFERENCES `project` (`num`)
-) ENGINE=InnoDB AUTO_INCREMENT=15 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=16 DEFAULT CHARSET=utf8;
 
 INSERT INTO `event` (`id`, `title`, `content`, `date_creation`, `predicted_date`, `id_creator`, `num_project`) VALUES
 (1,	'Mon premier évent',	'<p>Aucune descriptionzazazaz</p>\r\n',	'2020-12-29 22:14:42',	'2020-12-06 06:25:00',	1,	NULL),
@@ -69,7 +70,8 @@ INSERT INTO `event` (`id`, `title`, `content`, `date_creation`, `predicted_date`
 (10,	'azaza',	'',	'2020-12-29 23:01:09',	'2020-12-26 23:01:00',	1,	NULL),
 (12,	'hryyyyyy',	'<p>hryyyyyy</p>\r\n',	'2021-01-03 13:40:59',	'2021-01-14 14:14:00',	1,	NULL),
 (13,	'azaz',	'<p>azaz</p>\r\n',	'2021-01-03 14:12:11',	'2021-01-17 18:15:00',	1,	1),
-(14,	'',	'',	'2021-01-03 14:18:40',	'2021-01-03 14:21:00',	1,	NULL);
+(14,	'',	'',	'2021-01-03 14:18:40',	'2021-01-03 14:21:00',	1,	NULL),
+(15,	'azazaz',	'',	'2021-01-03 22:51:22',	'2021-01-03 22:53:00',	1,	NULL);
 
 DROP TABLE IF EXISTS `group`;
 CREATE TABLE `group` (
@@ -77,11 +79,14 @@ CREATE TABLE `group` (
   `name` varchar(150) NOT NULL,
   `description` varchar(200) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=17 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=20 DEFAULT CHARSET=utf8;
 
 INSERT INTO `group` (`id`, `name`, `description`) VALUES
 (1,	'Mon premier groupe',	'Ma description de groupe'),
-(16,	'azazaz',	'azazaz');
+(16,	'bbbbb',	'bbbbb'),
+(17,	'azazaz',	'azazaz'),
+(18,	'azazaz',	'azazaz'),
+(19,	'azazaz',	'azazaz');
 
 DROP TABLE IF EXISTS `group_person`;
 CREATE TABLE `group_person` (
@@ -96,22 +101,12 @@ CREATE TABLE `group_person` (
 INSERT INTO `group_person` (`id_group`, `id_pers`) VALUES
 (1,	1),
 (16,	1),
+(19,	1),
 (16,	2),
 (1,	3),
-(16,	3);
-
-DROP TABLE IF EXISTS `project_group`;
-CREATE TABLE `project_group` (
-  `id_group` int(11) NOT NULL,
-  `num_project` int(11) NOT NULL,
-  PRIMARY KEY (`id_group`,`num_project`),
-  KEY `num_project` (`num_project`),
-  CONSTRAINT `project_group_ibfk_1` FOREIGN KEY (`id_group`) REFERENCES `group` (`id`),
-  CONSTRAINT `project_group_ibfk_2` FOREIGN KEY (`num_project`) REFERENCES `project` (`num`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
-INSERT INTO `project_group` (`id_group`, `num_project`) VALUES
-(1,	1);
+(16,	3),
+(19,	3),
+(19,	4);
 
 DROP TABLE IF EXISTS `person`;
 CREATE TABLE `person` (
@@ -166,11 +161,26 @@ CREATE TABLE `project` (
   `description` text NOT NULL,
   `date_creation` datetime NOT NULL,
   PRIMARY KEY (`num`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
 
 INSERT INTO `project` (`num`, `name`, `description`, `date_creation`) VALUES
 (1,	'Mon premier rojet',	' Ma description de mon projetssss\r\n',	'2020-12-06 19:40:14'),
-(2,	'azazaz',	'azazazzzzz',	'2021-01-03 17:46:09');
+(2,	'azazaz',	'azazazzzzz',	'2021-01-03 17:46:09'),
+(3,	'azaz',	'azaza',	'2021-01-03 22:21:45');
+
+DROP TABLE IF EXISTS `project_group`;
+CREATE TABLE `project_group` (
+  `id_group` int(11) NOT NULL,
+  `num_project` int(11) NOT NULL,
+  PRIMARY KEY (`id_group`,`num_project`),
+  KEY `num_project` (`num_project`),
+  CONSTRAINT `project_group_ibfk_1` FOREIGN KEY (`id_group`) REFERENCES `group` (`id`),
+  CONSTRAINT `project_group_ibfk_2` FOREIGN KEY (`num_project`) REFERENCES `project` (`num`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+INSERT INTO `project_group` (`id_group`, `num_project`) VALUES
+(1,	1),
+(1,	2);
 
 DROP TABLE IF EXISTS `role`;
 CREATE TABLE `role` (
@@ -183,4 +193,4 @@ INSERT INTO `role` (`code`, `type`) VALUES
 ('EL',	'Elève'),
 ('EN',	'Enseignant ');
 
--- 2021-01-03 13:46:39
+-- 2021-01-03 20:12:40
