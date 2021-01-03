@@ -12,6 +12,8 @@
           <li><a href="article/add"> <span> Créer un article </span>  <i class="fa fa-plus"></i> </a> </li>
           <li><a href="event"> <span> Gérer les évènements </span>  <i class="fa fa-cog"></i>  </a> </li>
           <li><a href="event/add"> <span> Créer un évènement </span>  <i class="fa fa-plus"></i>  </a> </li>
+          <li><a href="group"> <span> Gérer les groupes </span>  <i class="fa fa-cog"></i>  </a> </li>
+          <li><a href="group/add"> <span> Créer un group </span>  <i class="fa fa-plus"></i>  </a> </li>
         </ul>
       </div>
           

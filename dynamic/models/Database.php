@@ -29,7 +29,6 @@ abstract class Database extends Website{
       $host   = $config['DB_SERVEUR'];
       $type   = $config['DB_SGBD'];
 
-      
       self::$cnx = new PDO("$type:host=$host;dbname=$db;charset=utf8mb4", $user, $pwd);
       self::$cnx->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_WARNING);
    }
@@ -82,7 +81,6 @@ abstract class Database extends Website{
 
     //Obtention de l'ID max de la table concernée
    protected function getMaxIdTable($table, $pk){
-
       $var = [];
          $req = self::$cnx->prepare("SELECT max($pk) as 'newId' FROM $table");
          $req->execute();
@@ -90,8 +88,6 @@ abstract class Database extends Website{
       if( empty($resultat) ){ $resultat = 1 ; }
       return $resultat;
       $req->closeCursor();
-      
-
    }
 
 

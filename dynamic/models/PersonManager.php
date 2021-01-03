@@ -44,7 +44,7 @@ class PersonManager extends Database{
     //Obtenir un tableau d'objet person d'un groupe indiqué
     public function getListForGroup($idGroup){
         $this->getDB(); 
-        $query = "SELECT p.* FROM person p INNER JOIN group_person gp ON gp.id_pers = p.id  WHERE gp._d_group=? ";
+        $query = "SELECT p.* FROM person p INNER JOIN group_person gp ON gp.id_pers = p.id  WHERE gp.id_group=? ";
         return $this->getModel("Person", $query, [$idGroup]) ;
     }
 
