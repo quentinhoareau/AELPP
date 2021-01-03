@@ -49,20 +49,16 @@
             </tr>
 
             <tr>
-                <td>Action</td>
+            <td>Action</td>
             <td class="form-inline">
 
-            <button class="form-control btn-primary" type="submit" name="<?php if(isset($group)){ echo "updateGroup"; }else{echo "addGroup" ;} ?>" <?php if(isset($group)){ echo "value='$group->id'"; } ?>><i class="fa fa-save"></i></button> 
+                <button class="form-control btn-primary" type="submit" name="<?php if(isset($group)){ echo "updateGroup"; }else{echo "addGroup" ;} ?>" <?php if(isset($group)){ echo "value='$group->id'"; } ?>><i class="fa fa-save"></i></button> 
 
-            <?php if(isset($group)){ ?>
-               
-                <button class="form-control btn-info" type="button" name="consult" value="<?= $group->id; ?>"><a href="../../group/<?= $group->id; ?>"> <i class="fa fa-eye"></i> </a> </button> 
-                <form action="" method="POST"> <button onclick="return confirm('Voulez-vous vraiment supprimer ce groupe ?')" class="form-control btn-danger" type="submit" name="deleteGroup" value="<?= $group->id; ?>"><i class="fa fa-trash"></i></button> </form>  
-            <?php } ?>
+                <?php if(isset($group)){ ?>
+                    <button class="form-control btn-info" type="button" name="consult" value="<?= $group->id; ?>"><a href="../../group/<?= $group->id; ?>"> <i class="fa fa-eye"></i> </a> </button> 
+                    <form action="" method="POST"> <button onclick="return confirm('Voulez-vous vraiment supprimer ce groupe ?')" class="form-control btn-danger" type="submit" name="deleteGroup" value="<?= $group->id; ?>"><i class="fa fa-trash"></i></button> </form>  
+                <?php } ?>
 
-               
-              
-              
             </td>
                 
             

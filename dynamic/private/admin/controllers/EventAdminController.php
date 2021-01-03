@@ -57,7 +57,7 @@ class EventAdminController{
 
          //Modifier un event
          if( isset($url[1]) && $url[1] == "update"  && $url[2] >= 1  ){
-            $viewName= "EventUpdate";
+            $viewName= "EventForm";
             $data= array(
                "event" => $this->EventManager->get($url[2]), //Obtenir la liste des produits
                "personList" => $this->PersonManager->getList(),
@@ -66,7 +66,7 @@ class EventAdminController{
          }
          //Ajouter un event
          else if( isset($url[1]) && $url[1] == "add"){
-            $viewName= "EventAdd";
+            $viewName= "EventForm";
             $data= array(
                "personList" => $this->PersonManager->getList(),
                "projectsList" => $this->ProjectManager->getList()

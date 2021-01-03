@@ -48,7 +48,7 @@ class ArticleAdminController{
 
          //Modifier un article
          if( isset($url[1]) && $url[1] == "update"  && $url[2] >= 1  ){
-            $viewName= "ArticleUpdate";
+            $viewName= "ArticleForm";
             $data= array(
                "article" => $this->ArticleManager->get($url[2]), //Obtenir la liste des produits
                "personList" => $this->PersonManager->getList()
@@ -56,7 +56,7 @@ class ArticleAdminController{
          }
          //Ajouter un article
          else if( isset($url[1]) && $url[1] == "add"){
-            $viewName= "ArticleAdd";
+            $viewName= "ArticleForm";
             $data= array(
                "personList" => $this->PersonManager->getList()
             );
