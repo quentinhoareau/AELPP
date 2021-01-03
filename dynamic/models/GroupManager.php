@@ -69,7 +69,7 @@ class GroupManager extends Database{
       //Obtenir un tableau d'objets Group d'un projet indiqué
       public function getListForProject($numProject){
         $this->getDB(); 
-        $query = "SELECT g.* FROM `group` g INNER JOIN group_project gp ON gp.id_group = g.id  WHERE g.id=? ";
+        $query = "SELECT g.* FROM `group` g INNER JOIN project_group gp ON gp.id_group = g.id  WHERE gp.num_project=? ";
         return $this->getModel("Group", $query, [$numProject]);
     }
 

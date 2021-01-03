@@ -39,6 +39,28 @@ class ProjectManager extends Database{
     }
 
 
+    //Insertion d'un group dans un projet
+    public function addGroup($num_project, $id_group){
+        $this->getDB(); 
+        $query = "INSERT INTO project_group(id_group, num_project) VALUES (?, ?)";
+        $this->execQuery($query, [$id_group, $num_project]);
+    }
+
+    //Vérification si le group est déja dans le projet
+    public function groupExist($num_project, $id_group){
+        $this->getDB(); 
+        $query = "SELECT COUNT(id_group) as 'nbGroup' FROM project_group WHERE id_group =? AND num_project=? ";
+        return boolval($this->execQuery($query, [$id_group, $num_project])[0]['nbGroup']);
+    }
+
+     //Supprimer tous les membres du groupe
+     public function removeAllGroup($num_project){
+        $this->getDB(); 
+        $query = "DELETE FROM project_group WHERE num_project =? ";
+        $this->execQuery($query, [$num_project]);
+    }
+
+
 }
 
 

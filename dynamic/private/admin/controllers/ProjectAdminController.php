@@ -3,7 +3,7 @@
 class ProjectAdminController{
    private $View;
    public $message;
-   private $PersonManager;
+   private $GroupManager;
    private $ProjectManager;
    
    // CONSTRUCTEUR 
@@ -16,7 +16,7 @@ class ProjectAdminController{
         
          /*---------MANAGER---------*/
          $this->ProjectManager= new ProjectManager();
-         $this->PersonManager= new PersonManager();
+         $this->GroupManager= new GroupManager();
 
          
          //Changement des path pour le BDD
@@ -38,6 +38,16 @@ class ProjectAdminController{
          if( isset($_POST["updateProject"]) ){ //Si formulaire modifié
             //Ajuster le format de la BDD
             $this->ProjectManager->update($_POST["updateProject"], $_POST["name"], $_POST["description"]);
+
+            //Ajouter des groupes au projet
+            $this->ProjectManager->removeAllGroup($_POST["updateProject"]);
+            foreach ($_POST["id_group"] as $idGroup) {
+               //Si le groupe n'est pas déjà dans le projet
+               if( !$this->ProjectManager->groupExist($_POST["updateProject"], $idGroup) ){
+                  $this->ProjectManager->addGroup( $_POST["updateProject"], $idGroup );
+               }
+            }
+           
          }
          /*------------------*/
      
@@ -47,15 +57,15 @@ class ProjectAdminController{
             $viewName= "ProjectForm";
             $data= array(
                "project" => $this->ProjectManager->get($url[2]), //Obtenir la liste des produits
-               "personList" => $this->PersonManager->getList()
+               "groupList" => $this->GroupManager->getList()
             );
          }
          //Ajouter un project
          else if( isset($url[1]) && $url[1] == "add"){
             $viewName= "ProjectForm";
             $data= array(
-               "personList" => $this->PersonManager->getList(),
-               "personList" => $this->PersonManager->getList()
+               "groupList" => $this->GroupManager->getList(),
+               "groupList" => $this->GroupManager->getList()
             );
          }
           //Liste des produits

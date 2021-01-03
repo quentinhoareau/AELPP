@@ -94,7 +94,7 @@
 
                 <?php if(isset($event)){ ?>
                     <button class="form-control btn-info" type="button" name="consult" value="<?= $event->id; ?>"><a href="../../event/<?= $event->id; ?>"> <i class="fa fa-eye"></i> </a> </button> 
-                    <form action="" method="POST"> <button onclick="return confirm('Voulez-vous vraiment supprimer ce evente ?')" class="form-control btn-danger" type="submit" name="deleteEvent" value="<?= $event->id; ?>"><i class="fa fa-trash"></i></button> </form>  
+                    <form action="" method="POST"> <button onclick="return confirm('Voulez-vous vraiment supprimer cette évènement ?')" class="form-control btn-danger" type="submit" name="deleteEvent" value="<?= $event->id; ?>"><i class="fa fa-trash"></i></button> </form>  
                 <?php } ?>
 
             </td>

@@ -38,9 +38,21 @@
                 <td> <textarea name="description" id="" cols="30" rows="10" required><?php if(isset($project)){ echo $project->description ;} ?></textarea></td> 
             </tr>
 
+
+            
             <tr>
                 <td> <label for=""> Groupe(s) du projet </label> </td> 
-                <td>   </td> 
+                <td> 
+                    <select  class="selectpicker" data-live-search="true" id="projectList" name="id_group[]" multiple>
+                        <?php foreach ($groupList as $group) {  var_dump($group);?>
+                            
+                            <option data-subtext="<?php echo "(" ; foreach ($group->getPersonList() as $person ) { echo $person->name.", " ; }  echo ")" ; ?>" value="<?= $group->id ?>"> <?= $group->name ?> </option>
+
+                            
+                        <?php } ?>
+                    </select>
+                </td>
+                
             </tr>
 
             <tr>
@@ -52,9 +64,9 @@
                     <?php if(isset($project)){ ?>
                         <button class="form-control btn-info" type="button" name="consult" value="<?= $project->num; ?>"><a href="../../project/<?= $project->num; ?>"> <i class="fa fa-eye"></i> </a> </button> 
                         <button class="form-control btn-primary" type="submit" name="updateProject" value="<?= $project->num; ?>"><i class="fa fa-save"></i></button> 
-                        <form action="" method="POST"> <button onclick="return confirm('Voulez-vous vraiment supprimer cette projectne ?')" class="form-control btn-danger" type="submit" name="deleteProject" value="<?= $project->num; ?>"><i class="fa fa-trash"></i></button> </form>  
+                        <form action="" method="POST"> <button onclick="return confirm('Voulez-vous vraiment supprimer cette projet ?')" class="form-control btn-danger" type="submit" name="deleteProject" value="<?= $project->num; ?>"><i class="fa fa-trash"></i></button> </form>  
                     <?php } else{ ?>
-                        <button class="form-control btn-primary" type="submit" value="1" name="addProject" ><i class="fa fa-plus"></i> Ajouter la projectne </button>
+                        <button class="form-control btn-primary" type="submit" value="1" name="addProject" ><i class="fa fa-plus"></i> Ajouter le projet </button>
                     <?php } ?>
             </td>
 
@@ -68,12 +80,22 @@
 </div>
 
 <script>
-
     $('select').selectpicker();
 
-    <?php if(isset($project)){ ?>
-        //$('.selectpicker').selectpicker('val', '<?php //echo $project->role_code ?>');
-    <?php } ?>
+
+
+<?php  
+   // Auto focus les membres du group de la liste de tous les personnes
+    if(isset($project)){
+        $groupList = null;
+        foreach ($project->getGroupList()  as $group) { 
+            $groupList[] = $group->id ;
+        }  
+?>
+        $('#projectList').selectpicker('val', <?= json_encode($groupList) ?>);
+<?php 
+    } 
+?>
 
 </script>
 

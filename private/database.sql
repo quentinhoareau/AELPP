@@ -100,17 +100,17 @@ INSERT INTO `group_person` (`id_group`, `id_pers`) VALUES
 (1,	3),
 (16,	3);
 
-DROP TABLE IF EXISTS `group_project`;
-CREATE TABLE `group_project` (
+DROP TABLE IF EXISTS `project_group`;
+CREATE TABLE `project_group` (
   `id_group` int(11) NOT NULL,
   `num_project` int(11) NOT NULL,
   PRIMARY KEY (`id_group`,`num_project`),
   KEY `num_project` (`num_project`),
-  CONSTRAINT `group_project_ibfk_1` FOREIGN KEY (`id_group`) REFERENCES `group` (`id`),
-  CONSTRAINT `group_project_ibfk_2` FOREIGN KEY (`num_project`) REFERENCES `project` (`num`)
+  CONSTRAINT `project_group_ibfk_1` FOREIGN KEY (`id_group`) REFERENCES `group` (`id`),
+  CONSTRAINT `project_group_ibfk_2` FOREIGN KEY (`num_project`) REFERENCES `project` (`num`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
-INSERT INTO `group_project` (`id_group`, `num_project`) VALUES
+INSERT INTO `project_group` (`id_group`, `num_project`) VALUES
 (1,	1);
 
 DROP TABLE IF EXISTS `person`;

@@ -108,3 +108,8 @@
     align-content: center;
     margin-right: 10px;
 }
+
+span.sub-menu{
+   margin-left: 20px;
+   font-size:14px
+}
