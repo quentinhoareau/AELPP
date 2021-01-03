@@ -43,7 +43,8 @@
             <tr>
                 <td> <label for=""> Groupe(s) du projet </label> </td> 
                 <td> 
-                    <select  class="selectpicker" data-live-search="true" id="projectList" name="id_group[]" multiple>
+                    <select  class="selectpicker" data-live-search="true" title="Aucun" id="projectList" name="id_group[]" multiple data-selected-text-format="count > 3">
+                    
                         <?php foreach ($groupList as $group) {  var_dump($group);?>
                             
                             <option data-subtext="<?php echo "(" ; foreach ($group->getPersonList() as $person ) { echo $person->name.", " ; }  echo ")" ; ?>" value="<?= $group->id ?>"> <?= $group->name ?> </option>
@@ -80,9 +81,10 @@
 </div>
 
 <script>
+   
     $('select').selectpicker();
 
-
+   
 
 <?php  
    // Auto focus les membres du group de la liste de tous les personnes

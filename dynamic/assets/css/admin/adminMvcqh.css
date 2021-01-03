@@ -2,3 +2,10 @@ body{
    background-color: #efefef;
 }
 
+.form-inline button{
+   margin:5px
+}
+
+.form-inline button a{
+   color:white
+}

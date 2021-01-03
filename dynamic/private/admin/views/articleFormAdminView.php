@@ -37,14 +37,14 @@
             
             <tr>
                 <td> <label for=""> Titre </label> </td> 
-                <td> <input name="title" type="text" <?php if(isset($article)){ echo "value='$article->title'"; } ?> required>  </td> 
+                <td> <input name="title" required type="text" <?php if(isset($article)){ echo "value='$article->title'"; } ?> required>  </td> 
             </tr>
 
 
             <tr>
                 <td> <label for=""> Contenu HTML </label> </td> 
                 <td>
-                    <textarea required name="html_content" id="html_content" palceholder="Décrivez votre article ici..." rows="10" cols="80"><?php if(isset($article)){ echo $article->html_content ;} ?></textarea>
+                    <textarea name="html_content" id="html_content" palceholder="Décrivez votre article ici..." rows="10" cols="80"><?php if(isset($article)){ echo $article->html_content ;} ?></textarea>
                     <script>
                         CKEDITOR.replace( 'html_content', {
                             language: 'fr'

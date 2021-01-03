@@ -24,7 +24,7 @@
 
             <tr>
                 <td> <label for=""> Nom </label> </td> 
-                <td> <input name="name" type="text" <?php if(isset($group)){ echo "value='$group->name'"; } ?>>  </td>
+                <td> <input required name="name" type="text" <?php if(isset($group)){ echo "value='$group->name'"; } ?>>  </td>
               
             </tr>
 
@@ -40,7 +40,7 @@
             <tr>
             <td> <label for=""> Membre(s) </label> </td> 
                 <td> 
-                    <select  class="selectpicker" data-live-search="true" id="memberList" name="id_pers[]" multiple>
+                    <select  class="selectpicker" data-live-search="true" id="memberList" name="id_pers[]" multiple data-count-selected-text="{0} membres" data-selected-text-format="count > 2" title="Aucun">
                         <?php foreach ($personList as $person) { ?>
                             <option data-subtext="<?= $person->getRole()->type ?>" value="<?= $person->id ?>"> <?= $person->surname." ".$person->name ?></option>
                         <?php } ?>

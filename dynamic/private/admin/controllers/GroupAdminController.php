@@ -34,10 +34,12 @@ class GroupAdminController{
             $idNewGroup = $this->GroupManager->add($_POST['name'], $_POST['description']);
 
             //Ajouts des membres au group
-            foreach ($_POST["id_pers"] as $idPers) {
-               $this->GroupManager->addPerson($idNewGroup, $idPers);
+            if(isset($_POST["id_pers"])){
+               foreach ($_POST["id_pers"] as $idPers) {
+                  $this->GroupManager->addPerson($idNewGroup, $idPers);
+               }
             }
-      
+         
             header("Location: ".ADMIN_HOME."group/update/".$idNewGroup);
          }
          if( isset($_POST["updateGroup"]) ){ //Si formulaire modifié

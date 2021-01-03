@@ -90,11 +90,14 @@
             <td>Action</td>
             <td class="form-inline">
 
-                <button class="form-control btn-primary" type="submit" name="<?php if(isset($event)){ echo "updateEvent"; }else{echo "addEvent" ;} ?>" <?php if(isset($event)){ echo "value='$event->id'"; } ?>><i class="fa fa-save"></i></button> 
+               
 
                 <?php if(isset($event)){ ?>
+                    <button class="form-control btn-primary" type="submit" name="updateEvent" <?= "value='$event->id'"; ?>><i class="fa fa-save"></i></button> 
                     <button class="form-control btn-info" type="button" name="consult" value="<?= $event->id; ?>"><a href="../../event/<?= $event->id; ?>"> <i class="fa fa-eye"></i> </a> </button> 
                     <form action="" method="POST"> <button onclick="return confirm('Voulez-vous vraiment supprimer cette évènement ?')" class="form-control btn-danger" type="submit" name="deleteEvent" value="<?= $event->id; ?>"><i class="fa fa-trash"></i></button> </form>  
+                <?php } else {?>
+                    <button class="form-control btn-primary" type="submit" name="addEvent" ><i class="fa fa-plus"></i> Ajouter</button> 
                 <?php } ?>
 
             </td>
