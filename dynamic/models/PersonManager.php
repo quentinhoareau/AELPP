@@ -27,12 +27,12 @@ class PersonManager extends Database{
     //Mie à jours d'un person
     public function update($id, $name ,$surname ,$email ,$phone ,$role_code){
         $this->getDB(); 
-        $query = "UPDATE person SET name=?, surname=?, email=?, phone=?, role_code=?, WHERE id=?";
+        $query = "UPDATE person SET name=?, surname=?, email=?, phone=?, role_code=? WHERE id=?";
         $this->execQuery($query,[$name ,$surname ,$email ,$phone ,$role_code, $id]);
     }
 
     //Insertion d'un person
-    public function insert($name ,$surname ,$email ,$phone ,$role_code){
+    public function add($name ,$surname ,$email ,$phone ,$role_code){
         $this->getDB(); 
         $query = "INSERT INTO person(name, surname, email, phone, role_code) VALUES (?, ?, ?, ?, ?)";
         $this->execQuery($query, [$name ,$surname ,$email ,$phone ,$role_code]);

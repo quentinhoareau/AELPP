@@ -39,5 +39,10 @@ class Project{
       return $GroupManager->getListForProject($this->num);
    }
 
+   public function getEventList(){
+      $EventManager = new EventManager;
+      return $EventManager->getListForProject($this->num);
+   }
+
 }
  

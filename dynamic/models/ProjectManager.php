@@ -32,9 +32,9 @@ class ProjectManager extends Database{
     }
 
     //Insertion d'un project
-    public function insert($name ,$description ,$id_creator ,$num_project){
+    public function add($name ,$description){
         $this->getDB(); 
-        $query = "INSERT INTO project(name,description) VALUES (?, ?)";
+        $query = "INSERT INTO project(name,description, date_creation) VALUES (?, ?, NOW())";
         $this->execQuery($query, [$name ,$description]);
     }
 

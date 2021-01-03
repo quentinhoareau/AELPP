@@ -43,6 +43,12 @@ class EventManager extends Database{
         return $this->getMaxIdTable("event", "id");
     }
 
+    //List
+    public function getListForProject($projectNum){
+        $this->getDB(); 
+        $query = "SELECT e.* FROM event e WHERE e.num_project = ? ";
+        return $this->execQuery($query, [$projectNum]);
+    }
 
 }
 
