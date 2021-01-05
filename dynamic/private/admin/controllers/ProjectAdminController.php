@@ -5,6 +5,7 @@ class ProjectAdminController{
    public $message;
    private $GroupManager;
    private $ProjectManager;
+   private $EventManager;
    
    // CONSTRUCTEUR 
    public function __construct($url){
@@ -17,6 +18,7 @@ class ProjectAdminController{
          /*---------MANAGER---------*/
          $this->ProjectManager= new ProjectManager();
          $this->GroupManager= new GroupManager();
+         $this->EventManager= new EventManager();
 
          
          //Changement des path pour le BDD
@@ -41,12 +43,15 @@ class ProjectAdminController{
 
             //Ajouter des groupes au projet
             $this->ProjectManager->removeAllGroup($_POST["updateProject"]);
-            foreach ($_POST["id_group"] as $idGroup) {
-               //Si le groupe n'est pas déjà dans le projet
-               if( !$this->ProjectManager->groupExist($_POST["updateProject"], $idGroup) ){
-                  $this->ProjectManager->addGroup( $_POST["updateProject"], $idGroup );
+            if(isset($_POST["id_group"])){
+               foreach ($_POST["id_group"] as $idGroup) {
+                  //Si le groupe n'est pas déjà dans le projet
+                  if( !$this->ProjectManager->groupExist($_POST["updateProject"], $idGroup) ){
+                     $this->ProjectManager->addGroup( $_POST["updateProject"], $idGroup );
+                  }
                }
             }
+            
            
          }
          /*------------------*/
@@ -57,7 +62,8 @@ class ProjectAdminController{
             $viewName= "ProjectForm";
             $data= array(
                "project" => $this->ProjectManager->get($url[2]), //Obtenir la liste des produits
-               "groupList" => $this->GroupManager->getList()
+               "groupList" => $this->GroupManager->getList(),
+               "eventList" => $this->EventManager->getList()
             );
          }
          //Ajouter un project
@@ -65,7 +71,7 @@ class ProjectAdminController{
             $viewName= "ProjectForm";
             $data= array(
                "groupList" => $this->GroupManager->getList(),
-               "groupList" => $this->GroupManager->getList()
+               "eventList" => $this->EventManager->getList()
             );
          }
           //Liste des produits

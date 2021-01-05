@@ -26,12 +26,12 @@
 
                 <tr>
                     <td> <label for=""> Date publié </label> </td> 
-                    <td> <input type="text" disabled value="<?= $article->publish_date; ?>"></td> 
+                    <td> <?= Website::convertDateDB($article->publish_date, 'd/m/Y à H:i') ?></td> 
                 </tr>
                 
                 <tr>
                     <td> <label for=""> Dernière éditions</label> </td> 
-                    <td> <input placeholder="Aucune édition" type="text" disabled value="<?= $article->edit_date; ?>"></td> 
+                    <td> <?= Website::convertDateDB($article->edit_date, 'd/m/Y à H:i') ?> </td> 
                 </tr>
             <?php } ?>
             
@@ -68,9 +68,7 @@
 
             <tr>
                 <td>Action</td>
-            <td class="form-inline">
-                    
-            </td>
+           
 
             <td class="form-inline">
                 <?php if(isset($article)){ ?>

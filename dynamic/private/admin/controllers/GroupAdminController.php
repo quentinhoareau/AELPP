@@ -46,9 +46,8 @@ class GroupAdminController{
             $this->GroupManager->update($_POST["updateGroup"], $_POST["name"],  $_POST['description']);
             
             //Ajouts des membres au group
-            if(isset($_POST["id_pers"])){
-
-               $this->GroupManager->removeAllMember($_POST["updateGroup"]);
+            $this->GroupManager->removeAllMember($_POST["updateGroup"]);
+            if(isset($_POST["id_pers"])){     
                foreach ($_POST["id_pers"] as $idPers) {
                   //Si la personne n'est pas déjà dans le groupe
                   if( !$this->GroupManager->memberExist($_POST["updateGroup"], $idPers) ){

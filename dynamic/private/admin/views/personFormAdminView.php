@@ -34,7 +34,7 @@
             
             <tr>
                 <td> <label for=""> Email </label> </td> 
-                <td> <input name="email" type="text" <?php if(isset($person)){ echo "value='$person->email'"; } ?> required>  </td> 
+                <td> <input name="email" type="email" <?php if(isset($person)){ echo "value='$person->email'"; } ?> required>  </td> 
             </tr>
 
             <tr>

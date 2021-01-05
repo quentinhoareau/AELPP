@@ -43,11 +43,27 @@
             <tr>
                 <td> <label for=""> Groupe(s) du projet </label> </td> 
                 <td> 
-                    <select  class="selectpicker" data-live-search="true" title="Aucun" id="projectList" name="id_group[]" multiple data-selected-text-format="count > 3">
+                    <select  class="selectpicker" data-live-search="true" title="Aucun" id="projectList" name="id_group[]" multiple data-count-selected-text="{0} groupes" data-selected-text-format="count > 2">
                     
-                        <?php foreach ($groupList as $group) {  var_dump($group);?>
+                        <?php foreach ($groupList as $group) {  ?>
                             
                             <option data-subtext="<?php echo "(" ; foreach ($group->getPersonList() as $person ) { echo $person->name.", " ; }  echo ")" ; ?>" value="<?= $group->id ?>"> <?= $group->name ?> </option>
+
+                            
+                        <?php } ?>
+                    </select>
+                </td>
+                
+            </tr>
+
+            <tr>
+                <td> <label for=""> Évènement(s) associé(s) </label> </td> 
+                <td> 
+                    <select  class="selectpicker" data-live-search="true" title="Aucun" id="eventList" name="id_event[]" multiple data-count-selected-text="{0} évènements" data-selected-text-format="count > 2">
+                    
+                        <?php foreach ($eventList as $event) { ?>
+                            
+                            <option data-subtext="<?= "le ".Website::convertDateDB($event->predicted_date, 'd/m/Y à H:i'); ?>" value="<?= $event->id ?>"> <?= $event->title ?> </option>
 
                             
                         <?php } ?>
@@ -84,8 +100,6 @@
    
     $('select').selectpicker();
 
-   
-
 <?php  
    // Auto focus les membres du group de la liste de tous les personnes
     if(isset($project)){
@@ -93,8 +107,16 @@
         foreach ($project->getGroupList()  as $group) { 
             $groupList[] = $group->id ;
         }  
+
+        $eventList = null;
+        foreach ($project->getEventList() as $event ) {
+            $eventList[] = $event->id ;
+        }
+       
 ?>
+        
         $('#projectList').selectpicker('val', <?= json_encode($groupList) ?>);
+        $('#eventList').selectpicker('val', <?= json_encode($eventList) ?>);
 <?php 
     } 
 ?>

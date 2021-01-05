@@ -60,7 +60,6 @@ class ProjectManager extends Database{
         $this->execQuery($query, [$num_project]);
     }
 
-
 }
 
 

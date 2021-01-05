@@ -47,7 +47,7 @@
                 <tr>
                     <td> <label for=""> Date de création </label> </td> 
                 
-                    <td> <input disabled name="date_creation" type="datetime-local" value="<?= Website::convertDateDB($event->date_creation, 'Y-m-d\TH:i'); ?>"> </td> 
+                    <td> <?= Website::convertDateDB($event->date_creation, 'd/m/Y à H:i'); ?> </td> 
                 </tr>
             <?php } ?>
 
