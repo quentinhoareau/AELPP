@@ -25,17 +25,17 @@ class ContactManager extends Database{
     }
 
     //Mie à jours d'un contact
-    public function update($id, $surname, $name, $phone, $object, $message){
+    public function update($id, $surname, $name, $email, $phone, $object, $message){
         $this->getDB(); 
-        $query = "UPDATE contact SET surname=?, name=?, phone=?, object=?, message=? WHERE id=?";
-        $this->execQuery($query,[$surname, $name, $phone, $object, $message, $id]);
+        $query = "UPDATE contact SET surname=?, email=?, name=?, phone=?, object=?, message=? WHERE id=?";
+        $this->execQuery($query,[$surname, $name, $email, $phone, $object, $message, $id]);
     }
 
     //Insertion d'un contact
-    public function insert($surname, $name, $phone, $object, $message){
+    public function add($surname, $name, $email, $phone, $object, $message){
         $this->getDB(); 
-        $query = "INSERT INTO contact(surname, name, phone, object, message) VALUES (?, ?, ?, ?, ?)";
-        $this->execQuery($query, [ $surname, $name, $phone, $object, $message]);
+        $query = "INSERT INTO contact(surname, name, phone, email, object, message) VALUES (?, ?, ?, ?, ?)";
+        $this->execQuery($query, [ $surname, $name, $email, $phone, $object, $message]);
     }
 
 

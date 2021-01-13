@@ -18,6 +18,7 @@
           <li><a href="person/add"> <span class='sub-menu'> Ajouter une personne </span>  <i class="fa fa-plus"></i>  </a> </li>
           <li><a href="project"> <span> Gérer les projets </span>  <i class="fa fa-cog"></i>  </a> </li>
           <li><a href="project/add"> <span class='sub-menu'> Ajouter un projet</span>  <i class="fa fa-plus"></i>  </a> </li>
+          <li><a href="contact"> <span> Gérer les contacts </span>  <i class="fa fa-cog"></i>  </a> </li>
         </ul>
       </div>
           

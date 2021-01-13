@@ -4,6 +4,7 @@ class Contact{
     private $id;
     private $surname;
     private $name;
+    private $email;
     private $phone;
     private $object;
     private $message;

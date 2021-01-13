@@ -24,6 +24,28 @@
                     <td> <?= Website::convertDateDB($project->date_creation, 'd/m/Y à H:i') ; ?> </td> 
                 </tr>   
 
+                <tr>
+                <td> <label for=""> Évènement(s) associé(s) </label> </td> 
+                <td> 
+                    <ul class="list-group">
+                    <?php foreach ($project->getEventList() as $event) { ?>
+                    <li class="list-group-item d-flex justify-content-between align-items-center">
+                    <a href="event/update/<?= $event->id ?>"> <?= "#".$event->id ?>  <?= $event->title ?> </a>
+                        <span class="badge badge-primary badge-pill"><?= "Le ".Website::convertDateDB($event->predicted_date, 'd/m/Y à H:i') ; ?></span>
+                    </li>
+
+                       
+                    <?php } ?>
+                    <li class="list-group-item d-flex justify-content-between align-items-center">
+                        
+                        <span class="badge badge-primary badge-pill"><a href="event/add"> Créer un nouvel évènement </a></span>
+                    </li>
+                    </ul>
+
+                </td>
+                
+            </tr>
+
             <?php } ?>
 
             
@@ -56,21 +78,7 @@
                 
             </tr>
 
-            <tr>
-                <td> <label for=""> Évènement(s) associé(s) </label> </td> 
-                <td> 
-                    <select  class="selectpicker" data-live-search="true" title="Aucun" id="eventList" name="id_event[]" multiple data-count-selected-text="{0} évènements" data-selected-text-format="count > 2">
-                    
-                        <?php foreach ($eventList as $event) { ?>
-                            
-                            <option data-subtext="<?= "le ".Website::convertDateDB($event->predicted_date, 'd/m/Y à H:i'); ?>" value="<?= $event->id ?>"> <?= $event->title ?> </option>
-
-                            
-                        <?php } ?>
-                    </select>
-                </td>
-                
-            </tr>
+           
 
             <tr>
                 <td>Action</td>
@@ -107,16 +115,11 @@
         foreach ($project->getGroupList()  as $group) { 
             $groupList[] = $group->id ;
         }  
-
-        $eventList = null;
-        foreach ($project->getEventList() as $event ) {
-            $eventList[] = $event->id ;
-        }
        
 ?>
         
         $('#projectList').selectpicker('val', <?= json_encode($groupList) ?>);
-        $('#eventList').selectpicker('val', <?= json_encode($eventList) ?>);
+
 <?php 
     } 
 ?>
